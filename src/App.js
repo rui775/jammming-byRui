@@ -1,31 +1,19 @@
 import React, { useState } from 'react';
-import songs from '../src/temp/songs.js';
+import { Playlist, Results } from './components';
 import SearchBar from './components/searchbar/searchBar';
-import Results from './components/results/results';
-import Playlist from './components/playlist/playlist';
 import styles from './App.module.css';
+import { useSearchSongs } from './api/useSearchSongs';
 
-function App() {
-  const [searchTerm, setSearchTerm] = useState('');
-  const handleSearch = (e) => {
-    setSearchTerm(e.target.value);
-  }
-
-  const [searchResults, setSearchResults] = useState([]);
-  const handleSearchSubmit = (e) => {
-    e.preventDefault();
-    if (searchTerm === '') {
-      return;
-    } else {
-      const searchResults = songs.filter(song => {
-        return song.name.toLowerCase().includes(searchTerm.toLowerCase()) || song.artist.toLowerCase().includes(searchTerm.toLowerCase()) || song.album.toLowerCase().includes(searchTerm.toLowerCase());
-      });
-      setSearchResults(searchResults);
-    }
-    setSearchTerm('');
-  };
-
+function App({ apiClient }) {
   const [playList, setPlayList] = useState([]);
+  const {
+    searchTerm,
+    searchResults,
+    setSearchTerm,
+    handleSearch,
+    isLoading,
+  } = useSearchSongs({ apiClient });
+
   const addToPlaylist = (song) => {
     setPlayList((prev) => {
       if (prev.includes(song)) {
@@ -47,13 +35,24 @@ function App() {
       <div>
         <SearchBar
           searchTerm={searchTerm}
-          handleSearch={handleSearch}
-          handleSearchSubmit={handleSearchSubmit}
+          handleSearchSubmit={handleSearch}
+          handleSearchTermInput={setSearchTerm}
         />
       </div>
       <div className={styles.container}>
-        <Results searchResults={searchResults} addToPlaylist={addToPlaylist} />
-        <Playlist playList={playList} addToPlaylist={addToPlaylist} removeFromPlaylist={removeFromPlaylist} />
+        {isLoading ? (
+          'Loading...'
+        ) : (
+          <Results
+            searchResults={searchResults}
+            addToPlaylist={addToPlaylist}
+          />
+        )}
+        <Playlist
+          playList={playList}
+          addToPlaylist={addToPlaylist}
+          removeFromPlaylist={removeFromPlaylist}
+        />
       </div>
     </>
   );

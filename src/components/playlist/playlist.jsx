@@ -23,4 +23,4 @@ const Playlist = ({ playList, removeFromPlaylist }) => {
     );
 };
 
-export default Playlist;
+export { Playlist };

@@ -1,22 +1,19 @@
 import styles from './searchbar.module.css';
 
-export default function SearchBar({ searchTerm, handleSearch, handleSearchSubmit }) {
-
+export default function SearchBar({ handleSearchSubmit }) {
     return (
         <div className={styles.container}>
             <h1 className={styles.dance}>Jammming</h1>
-            <form>
+            <form onSubmit={handleSearchSubmit}>
                 <input
                     className={styles.inputSearch}
                     type="text"
+                    name="search"
                     placeholder="Enter a song, album or artist"
-                    value={searchTerm}
-                    onChange={handleSearch}
                 />
                 <button
                     className={styles.searchButton}
                     type="submit"
-                    onClick={handleSearchSubmit}
                 >
                     Search
                 </button>

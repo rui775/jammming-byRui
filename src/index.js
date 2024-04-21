@@ -2,13 +2,19 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
+import data from './api/data.json';
 import reportWebVitals from './reportWebVitals';
+import { SpotifyClient } from './api/spotifyClient';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const apiClient = new SpotifyClient(data);
+
+const root = ReactDOM.createRoot(
+  document.getElementById('root'),
+);
 root.render(
   <React.StrictMode>
-    <App />
-  </React.StrictMode>
+    <App apiClient={apiClient} />
+  </React.StrictMode>,
 );
 
 // If you want to start measuring performance in your app, pass a function
