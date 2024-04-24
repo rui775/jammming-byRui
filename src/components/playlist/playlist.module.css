@@ -1,13 +1,14 @@
 .playlist {
+    width: 30rem;
+    height: 20rem;
     background: linear-gradient(to right, #ff6666, #ffcc00);
     transition: background 1s ease-in-out;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    margin-top: 2rem;
-    padding: 1rem;
-    margin-right: 1rem;
+    /* justify-content: center; */
+    margin-top: 0.5rem;
+    padding: 1rem 0;
     border-radius: 2rem;
 }
 
@@ -17,7 +18,30 @@
 
 .list {
     list-style: none;
+    text-align: center;
     margin-top: 0;
+    padding: 0;
+    padding-right: 0.5rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.list::-webkit-scrollbar {
+    width: 0.75rem;
+}
+
+.list:hover::-webkit-scrollbar-track {
+    background: orange;
+}
+
+.list:hover::-webkit-scrollbar-thumb {
+    background-color: green;
+    border-radius: 4rem;
+    border: 3px solid orange;
+}
+
+.list li {
+    margin-right: 0;
 }
 
 .entry {
@@ -98,4 +122,15 @@
     fill: currentColor;
     overflow: hidden;
     margin-top: 0.5rem;
+}
+
+@media (max-width: 480px) {
+    .playlist {
+        width: 20rem;
+        height: 20rem;
+    }
+
+    .list {
+        max-width: 18rem;
+    }
 }
