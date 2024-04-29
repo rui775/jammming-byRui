@@ -69,7 +69,7 @@
 }
 
 .searchButton {
-    width: 10rem;
+    width: 12rem;
     background-color: #800080;
     color: white;
     border: none;
@@ -132,5 +132,9 @@
 
     .list {
         max-width: 18rem;
+    }
+
+    .playlist:hover {
+        background: linear-gradient(to right, #ff6666, #ffcc00);
     }
 }
