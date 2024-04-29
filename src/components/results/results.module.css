@@ -92,4 +92,8 @@ h2 {
         height: 20rem;
         margin-right: 0;
     }
+
+    .results:hover {
+        background: linear-gradient(to right, #ff6666, #ffcc00);
+    }
 }
