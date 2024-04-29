@@ -34,7 +34,7 @@ const Playlist = ({ inputRef, playList, removeFromPlaylist, handlePlaylistName, 
                 <button
                     className={styles.searchButton}
                     type="submit"
-                >Save to Spotify</button>
+                >Save to My Playlists</button>
             </form>
         </div>
     );
