@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import songs from '../src/temp/songs.js';
 import { SearchBar, Results, Playlist, MyPlayLists } from './components/index.js';
+import { Login } from './api/index.js';
 import styles from './App.module.css';
 
 function App() {
@@ -99,6 +100,7 @@ function App() {
           handleSearchSubmit={handleSearchSubmit}
         />
       </div>
+      <Login />
       <div className={styles.container}>
         <Results
           searchResults={searchResults}
